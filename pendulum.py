@@ -4,6 +4,7 @@ from numpy import sin, cos
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+#from IPython.display import HTML
 
 # Equations
 def equations(y0, time) :
@@ -62,6 +63,8 @@ def update(num, time, y, y2, line,line2):
     line2.set_data(time[:num], y2[:num])
     return line, line2
 
-ani = animation.FuncAnimation(fig, update, len(time), fargs=[time, y,y2, line,line2],
+anim = animation.FuncAnimation(fig, update, len(time), fargs=[time, y,y2, line,line2],
                               interval=10, blit=True)
 plt.show()
+#HTML(anim.to_jshtml()) # Interactive
+#HTML(anim.to_html5_video()) # HTML5
